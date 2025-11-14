@@ -6,9 +6,33 @@
     xmlns:local="clr-namespace:Infohotel"
     Title="Infohotel">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <!-- Perfil, Reservas, Reservar, Geografia y Mas -->
+
+
+    <TabBar>
+        <Tab Title="Inicio" Icon="homeicono.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+
+        <Tab Title="Perfil" Icon="perfilicono.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:Perfil}"/>
+        </Tab>
+
+        <Tab Title="Reservar" Icon="reservarimagen.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:Reservas}"/>
+        </Tab>
+
+        <Tab Title="Reservas" Icon="reservasicono.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:Reservar}"/>
+        </Tab>
+
+        <Tab Title="Geografia" Icon="mapaicono.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:Geografia}"/>
+        </Tab>
+
+        <Tab Title="Ayuda" Icon="ayudaicono.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:Mas}"/>
+        </Tab>
+    </TabBar>
 
 </Shell>
