@@ -20,7 +20,7 @@
                    FontFamily="Calisto MT"
                    FontAttributes="Bold"/>
 
-            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae sapien quis , blandit est. Praesent finibus ligula tempus tortor finibus, non blandit metus sollicitudin. Ut venenatis turpis nec nisl varius faucibus. Vestibulum at quam quis neque mollis euismod. Sed tortor risus, tincidunt et convallis eu, commodo ac sem. Integer a risus massa. Nullam ullamcorper ut metus at egestas. Nullam ac ipsum sapien. Maecenas tincidunt ex lorem, vel ullamcorper libero dictum a. Donec id auctor urna. In porttitor diam vitae mi condimentum, id lacinia enim pulvinar."
+            <Label Text="Playa Hermosa es uno de los destinos más encantadores de Guanacaste, reconocido por su ambiente sereno, su arena gris suave y sus aguas calmadas que invitan al descanso. Rodeada de colinas verdes y una naturaleza vibrante, esta playa ofrece un escenario ideal para relajarse, nadar y explorar el entorno sin prisa. Su tranquilidad la convierte en una opción perfecta para familias, parejas y viajeros que buscan conectar con la esencia del Pacífico costarricense. A pocos minutos de centros turísticos y con atardeceres memorables, Playa Hermosa combina accesibilidad, belleza natural y una experiencia auténtica que encanta a quienes la visitan."
                    Margin="10,5,10,20"
                    FontSize="Small"
                    FontFamily="Calisto MT"
@@ -39,7 +39,7 @@
                    FontFamily="Calisto MT"
                    FontAttributes="Bold"/>
 
-            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae sapien quis nulla vulputate dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam vestibulum augue id leo varius sollicitudin. Ut in pulvinar neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam a tortor suscipit, scelerisque velit vitae, blandit est. Praesent finibus Nullam ullamcorper ut metus at egestas. Nullam ac ipsum sapien. Maecenas tincidunt ex lorem, vel ullamcorper libero dictum a. Donec id auctor urna. In porttitor diam vitae mi condimentum, id lacinia enim pulvinar."
+            <Label Text="El Waldorf Astoria Costa Rica es un resort de lujo ubicado en Punta Cacique, un destino donde la naturaleza y el confort se encuentran para ofrecer una experiencia inigualable. Este exclusivo hotel combina diseño contemporáneo, bienestar integral y hospitalidad de clase mundial en un entorno rodeado de bosques tropicales y playas de aguas cristalinas. Cada espacio ha sido creado para brindar tranquilidad, privacidad y un servicio excepcional, ideal para quienes buscan relajarse, explorar o celebrar momentos especiales. Con experiencias gastronómicas únicas, un spa inspirado en la esencia local y vistas espectaculares del Pacífico, Waldorf Astoria Costa Rica redefine el lujo en Guanacaste y da la bienvenida a quienes desean vivir una estadía extraordinaria."
                    Margin="10,5,10,20"
                    FontSize="Small"
                    FontFamily="Calisto MT"
@@ -60,6 +60,14 @@
                             <x:String>https://imgcap.capturetheatlas.com/wp-content/uploads/2024/04/Playa-Hermosa-otra-de-las-playas-mas-concurridas-de-Guanacaste-1415x540.jpg</x:String>
                             <x:String>https://images.visitarcostarica.com/refugio-nacional-vida-silvestre-playa-hermosa-costa-rica.jpg</x:String>
                             <x:String>https://www.govisitcostarica.co.cr/images/photos/mob-playa-hermosa-guanacaste.jpg</x:String>
+                            <x:String>https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/b3/cb/a9/20181201-092817-largejpg</x:String>
+                            <x:String>https://static.wixstatic.com/media/0bb727_5228295124354865b5cd70b4728c5f62~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0bb727_5228295124354865b5cd70b4728c5f62~mv2.jpg</x:String>
+                            <x:String>https://imgcap.capturetheatlas.com/wp-content/uploads/2024/06/Playa-Penca-un-sitio-que-visitar-cerca-de-Playa-Hermosa-Costa-Rica.jpg</x:String>
+                            <x:String>https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Playa_Hermosa.JPG/1200px-Playa_Hermosa.JPG</x:String>
+                            <x:String>https://www.creescapes.com/wp-content/uploads/playa-hermosa-costa-rica.jpg</x:String>
+                            <x:String>https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=350,height=290/tour_img/a82fe939f9e4df80e5a788ee7a2297964923b42c604b118df49e544d8592a108.jpeg
+                            </x:String>
+
                         </x:Array>
                     </CarouselView.ItemsSource>
                     <CarouselView.ItemTemplate>
