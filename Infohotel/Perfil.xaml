@@ -2,11 +2,183 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Infohotel.Perfil"
-             Title="Perfil">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             BackgroundColor="#F0DFBC"
+             Title="Perfil"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0"
+              BackgroundColor="LightBlue"
+              Padding="16,40,16,12"
+              ColumnDefinitions="Auto,*,Auto">
+
+            <Label Text="‹"
+                   TextColor="White"
+                   FontSize="26"
+                   VerticalTextAlignment="Center" />
+
+
+            <Label Grid.Column="1"
+                   Text="Perfil"
+                   TextColor="White"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold" />
+
+
+            <Label Grid.Column="2"
+                   Text="⚙"
+                   TextColor="White"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="18">
+
+
+                <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+
+                    <Frame HeightRequest="120"
+                           WidthRequest="120"
+                           Padding="0"
+                           CornerRadius="60"
+                           HasShadow="True"
+                           BorderColor="White"
+                           HorizontalOptions="Center">
+                        <Image Source="profile_placeholder.png"
+                               Aspect="AspectFill" />
+                    </Frame>
+
+                    <!-- Nombre -->
+                    <Label Text="Camila Rodríguez"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <!-- País + ciudad -->
+                    <HorizontalStackLayout Spacing="6"
+                                           HorizontalOptions="Center">
+                        <Label Text="🇦🇷"
+                               FontSize="18" />
+                        <Label Text="Argentina · Buenos Aires"
+                               FontSize="16"
+                               VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+
+                    <!-- Edad -->
+                    <Label Text="29 años"
+                           FontSize="14"
+                           TextColor="#555555"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- TARJETA: DATOS PERSONALES -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="18"
+                       Padding="16"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Datos personales"
+                               FontSize="18"
+                               FontAttributes="Bold" />
+
+                        <Label Text="Documento:   32.456.789"
+                               FontSize="14" />
+                        <Label Text="Fecha de nacimiento:   21/03/1996"
+                               FontSize="14" />
+                        <Label Text="Género:   Femenino"
+                               FontSize="14" />
+                        <Label Text="Nacionalidad:   Argentina"
+                               FontSize="14" />
+                        <Label Text="Idiomas:   Español · Inglés B2"
+                               FontSize="14" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- TARJETA: CONTACTO -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="18"
+                       Padding="16"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Contacto"
+                               FontSize="18"
+                               FontAttributes="Bold" />
+
+                        <Label Text="Correo:   camila.rodriguez@example.com"
+                               FontSize="14" />
+                        <Label Text="Teléfono:   +54 11 5555-8899"
+                               FontSize="14" />
+                        <Label Text="Dirección:   Palermo, Buenos Aires"
+                               FontSize="14" />
+
+                        <Label Text="Cambiar contraseña"
+                               FontSize="14"
+                               TextColor="#5A2D82"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- TARJETA: PREFERENCIAS -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="18"
+                       Padding="16"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Preferencias de hospedaje"
+                               FontSize="18"
+                               FontAttributes="Bold" />
+
+                        <Label Text="Tipo de habitación:   Suite · Vista al mar"
+                               FontSize="14" />
+                        <Label Text="Cama:   King"
+                               FontSize="14" />
+                        <Label Text="Fumadora:   No fumadora"
+                               FontSize="14" />
+                        <Label Text="Check-in preferido:   Después de las 15:00"
+                               FontSize="14" />
+                        <Label Text="Alergias / restricciones:   Alergia al gluten"
+                               FontSize="14" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- TARJETA: PROGRAMA FIDELIDAD -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="18"
+                       Padding="16"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Programa de fidelidad"
+                               FontSize="18"
+                               FontAttributes="Bold" />
+
+                        <Label Text="Nivel:   Diamond ⭐"
+                               FontSize="14" />
+                        <Label Text="Puntos acumulados:   24 350"
+                               FontSize="14" />
+                        <Label Text="Estancias totales:   32 noches"
+                               FontSize="14" />
+
+                        <Button Text="Ver beneficios"
+                                BackgroundColor="LightBlue"
+                                TextColor="White"
+                                CornerRadius="24"
+                                HeightRequest="40"
+                                HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- BOTÓN EDITAR PERFIL -->
+                <Button Text="Editar perfil"
+                        BackgroundColor="LightBlue"
+                        TextColor="White"
+                        CornerRadius="24"
+                        HeightRequest="48"
+                        Margin="0,10,0,20" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

@@ -57,7 +57,7 @@
        ItemsLayout="HorizontalList">
                     <CarouselView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>https://costa-rica-guide.com/wp-content/uploads/2019/06/DSCN7611.jpg</x:String>
+                            <x:String>https://imgcap.capturetheatlas.com/wp-content/uploads/2024/04/Playa-Hermosa-otra-de-las-playas-mas-concurridas-de-Guanacaste-1415x540.jpg</x:String>
                             <x:String>https://images.visitarcostarica.com/refugio-nacional-vida-silvestre-playa-hermosa-costa-rica.jpg</x:String>
                             <x:String>https://www.govisitcostarica.co.cr/images/photos/mob-playa-hermosa-guanacaste.jpg</x:String>
                         </x:Array>
