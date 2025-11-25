@@ -19,11 +19,11 @@
         </Tab>
 
         <Tab Title="Reservar" Icon="reservarimagen.svg">
-            <ShellContent ContentTemplate="{DataTemplate local:Reservas}"/>
+            <ShellContent ContentTemplate="{DataTemplate local:Reservar}"/>
         </Tab>
 
         <Tab Title="Reservas" Icon="reservasicono.svg">
-            <ShellContent ContentTemplate="{DataTemplate local:Reservar}"/>
+            <ShellContent ContentTemplate="{DataTemplate local:Reservas}"/>
         </Tab>
 
         <Tab Title="Geografia" Icon="mapaicono.svg">

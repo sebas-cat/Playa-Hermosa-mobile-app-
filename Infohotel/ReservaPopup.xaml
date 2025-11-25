@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Infohotel.ReservaPopup"
+             Title="ReservaPopup">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="16" Spacing="16">
+
+                <!-- Resumen de la habitación -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="12"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="4">
+                        <Label x:Name="RoomNameLabel"
+                               FontAttributes="Bold"
+                               TextColor="#735945" />
+                        <Label x:Name="DatesLabel"
+                               FontSize="12"
+                               TextColor="#333333" />
+                        <Label x:Name="GuestsSummaryLabel"
+                               FontSize="12"
+                               TextColor="#333333" />
+                        <Label x:Name="PriceSummaryLabel"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               TextColor="#735945" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Datos personales -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="12"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Introduce tus datos"
+                               FontAttributes="Bold"
+                               TextColor="#735945" />
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="8">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="Nombre *" FontSize="12" />
+                                <Entry x:Name="FirstNameEntry" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Apellido *" FontSize="12" />
+                                <Entry x:Name="LastNameEntry" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <VerticalStackLayout>
+                            <Label Text="E-mail *" FontSize="12" />
+                            <Entry x:Name="EmailEntry" Keyboard="Email" />
+                        </VerticalStackLayout>
+
+                        <Grid ColumnDefinitions="Auto,*"
+                              ColumnSpacing="8">
+                            <VerticalStackLayout Grid.Column="0" WidthRequest="100">
+                                <Label Text="País/región" FontSize="12" />
+                                <Picker x:Name="CountryPicker">
+                                    <Picker.Items>
+                                        <x:String>Costa Rica</x:String>
+                                        <x:String>Panamá</x:String>
+                                        <x:String>México</x:String>
+                                        <x:String>Otro</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Número de teléfono" FontSize="12" />
+                                <Entry x:Name="PhoneEntry" Keyboard="Telephone" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Botones -->
+                <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="10">
+
+                    <Button Text="Cancelar"
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            TextColor="#735945"
+                            BorderColor="#735945"
+                            BorderWidth="1"
+                            CornerRadius="10"
+                            Clicked="OnCancelClicked" />
+
+                    <Button Text="Confirmar reserva"
+                            Grid.Column="1"
+                            BackgroundColor="#735945"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnConfirmClicked" />
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
