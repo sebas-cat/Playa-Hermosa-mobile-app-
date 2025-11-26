@@ -2,10 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Infohotel.Login"
-             Title="Login">
+             Title="Login"
+             NavigationPage.HasNavigationBar="False">
+             
     <ScrollView>
         <Grid>
             <Image Source="fondo1.png" Aspect="AspectFill" />
+            <BoxView Color="#F3F3EE"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -14,13 +19,17 @@
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="logohotel2.png" WidthRequest="200" HeightRequest="100" Margin="0,50,0,30"/>
                 <StackLayout Grid.Row="1" Padding="10,20">
-                    <Entry Placeholder="Correo electrónico" PlaceholderColor="White" x:Name="UsernameEntry"/>
-                    <Entry Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" x:Name="PasswordEntry"/>
-                    <Button Text="Iniciar Sesión" BackgroundColor="#003300" TextColor="#33FF33" x:Name="BtnIr" Clicked="OnLoginClicked"/>
+                    <Entry Placeholder="Correo electrónico" PlaceholderColor="#333333" x:Name="UsernameEntry"/>
+                    <Entry Placeholder="Contraseña" PlaceholderColor="#333333" IsPassword="True" x:Name="PasswordEntry"/>
+                    <Button Text="Iniciar Sesión" BackgroundColor="#D9C49B" TextColor="#333333" x:Name="BtnIr" Clicked="OnLoginClicked"/>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Recuperar Contraseña" FontSize="Small" TextColor="White"/>
-                        <Label Text="Registrarse" FontSize="Small" TextColor="White" FontAttributes="Bold"
-                        HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+                        <Label Text="Recuperar Contraseña" FontSize="Small" TextColor="#333333"/>
+                        <Label Text="Registrarse" FontSize="Small" TextColor="#333333" FontAttributes="Bold"
+       HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
             </Grid>

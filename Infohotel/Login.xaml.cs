@@ -69,5 +69,14 @@ public partial class Login : ContentPage
             //la parte de errores
             await DisplayAlert("Error", ex.Message, "OK");
         }
+
+
     }
+
+    //Esto es lo de que al tocar registrar lo dirige a esa pag
+    private async void OnRegisterTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Registro());
+    }
+
 }
