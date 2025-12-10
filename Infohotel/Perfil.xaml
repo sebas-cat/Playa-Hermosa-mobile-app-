@@ -12,7 +12,8 @@
               Padding="16,40,16,12"
               ColumnDefinitions="Auto,*,Auto">
 
-            <Label Text="‹"
+            <Label x:Name="BackLabel"
+                   Text="‹"
                    TextColor="White"
                    FontSize="26"
                    VerticalTextAlignment="Center" />
@@ -27,7 +28,8 @@
                    FontAttributes="Bold" />
 
 
-            <Label Grid.Column="2"
+            <Label x:Name="SettingsLabel"
+                   Grid.Column="2"
                    Text="⚙"
                    TextColor="White"
                    FontSize="20"
@@ -172,7 +174,8 @@
                 </Frame>
 
                 <!-- BOTÓN EDITAR PERFIL -->
-                <Button Text="Editar perfil"
+                <Button x:Name="EditButton"
+                        Text="Editar perfil"
                         BackgroundColor="LightBlue"
                         TextColor="White"
                         CornerRadius="24"

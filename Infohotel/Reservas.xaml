@@ -2,11 +2,76 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Infohotel.Reservas"
-             Title="Reservas">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Mis Reservas"
+             BackgroundColor="#F3F3EE">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Mis Reservas"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#735945"
+                   HorizontalOptions="Center"/>
+
+            <Frame BackgroundColor="White"
+                   CornerRadius="12"
+                   Padding="20"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📋 Próximamente..."
+                           FontSize="16"
+                           TextColor="#735945"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Aquí podrás ver todas tus reservas realizadas"
+                           FontSize="14"
+                           TextColor="#666"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="• Ver detalles de cada reserva"
+                           FontSize="13"
+                           TextColor="#333"/>
+                    <Label Text="• Modificar fechas"
+                           FontSize="13"
+                           TextColor="#333"/>
+                    <Label Text="• Cancelar reservas"
+                           FontSize="13"
+                           TextColor="#333"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Ejemplo de reserva (estático por ahora) -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="12"
+                   Padding="15"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout>
+                        <Label Text="🔖 RS251012456"
+                               FontAttributes="Bold"
+                               TextColor="#735945"/>
+                        <Label Text=" Confirmada"
+                               FontSize="12"
+                               TextColor="#4CAF50"
+                               HorizontalOptions="EndAndExpand"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Suite Vista al Mar"
+                           FontAttributes="Bold"/>
+
+                    <Label Text="📅 25/10/2024 → 28/10/2024 (3 noches)"
+                           FontSize="12"/>
+
+                    <Label Text="👥 2 huéspedes"
+                           FontSize="12"/>
+
+                    <Label Text="💰 Total: $450"
+                           FontAttributes="Bold"
+                           TextColor="#735945"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,75 +1,109 @@
-using Infohotel.Models;
+Ôªøusing Infohotel.Models;
 
 namespace Infohotel;
 
 public partial class ReservaPopup : ContentPage
 {
-    // Se mantiene la informaciÛn original de la habitaciÛn seleccionada.
-    private readonly Room _room;
+    private Room _room;
 
-    // Fechas seleccionadas en la pantalla anterior.
-    private readonly DateTime _checkIn;
-    private readonly DateTime _checkOut;
+    // NUEVOS CAMPOS PARA RECIBIR LOS DATOS
+    private DateTime _checkIn;
+    private DateTime _checkOut;
+    private int _guests;
 
-    // Cantidad de huÈspedes seleccionados.
-    private readonly int _guests;
+    // üîπ Constructor original (puedes dejarlo si lo necesitas)
+    public ReservaPopup(Room room)
+    {
+        InitializeComponent();
+        _room = room;
+        LoadRoomInfo();
+    }
 
+    // üîπ Constructor que S√ç COINCIDE con la llamada desde HabitacionDetalle
     public ReservaPopup(Room room, DateTime checkIn, DateTime checkOut, int guests)
     {
         InitializeComponent();
 
-        // Se guardan los valores para mostrarlos y calcular el precio.
         _room = room;
         _checkIn = checkIn;
         _checkOut = checkOut;
         _guests = guests;
 
-        // Genera el resumen visible al usuario.
-        FillSummary();
+        LoadRoomInfoWithDates();
     }
 
-    private void FillSummary()
+    // üî∏ Vista simple sin fechas (del constructor viejo)
+    private void LoadRoomInfo()
     {
         RoomNameLabel.Text = _room.Name;
+        PriceSummaryLabel.Text = $"$ {_room.PricePerNight:N0} / noche";
 
-        // Se formatean las fechas para mostrarlas de manera legible.
-        DatesLabel.Text = $"Entrada: {_checkIn:dddd dd MMMM yyyy}\nSalida: {_checkOut:dddd dd MMMM yyyy}";
-
-        GuestsSummaryLabel.Text = _guests == 1 ? "1 huÈsped" : $"{_guests} huÈspedes";
-
-        // Se calcula el n˙mero de noches; si las fechas son iguales, se cuenta 1 noche.
-        int nights = (_checkOut - _checkIn).Days;
-        if (nights < 1) nights = 1;
-
-        // EstimaciÛn del costo total seg˙n la tarifa por noche.
-        decimal total = _room.PricePerNight * nights;
-
-        PriceSummaryLabel.Text = $"{nights} noches ∑ Total estimado: $ {total:N0}";
+        DatesLabel.Text = $"Reserva para hoy ({DateTime.Now:dd/MM/yyyy})";
+        GuestsSummaryLabel.Text = $"M√°ximo {_room.MaxGuests} hu√©spedes";
     }
+
+    // üî∏ Nueva versi√≥n que muestra fechas reales y hu√©spedes
+    private void LoadRoomInfoWithDates()
+    {
+        RoomNameLabel.Text = _room.Name;
+        PriceSummaryLabel.Text = $"$ {_room.PricePerNight:N0} / noche";
+
+        DatesLabel.Text =
+            $"{_checkIn:dd/MM/yyyy} ‚Üí {_checkOut:dd/MM/yyyy} " +
+            $"({(_checkOut - _checkIn).Days} noches)";
+
+        GuestsSummaryLabel.Text = $"{_guests} hu√©sped(es)";
+    }
+
+    // -----------------------------
+    // BOTONES
+    // -----------------------------
 
     private async void OnCancelClicked(object sender, EventArgs e)
     {
-        // Cierra el popup sin realizar ninguna acciÛn adicional.
         await Navigation.PopModalAsync();
     }
 
     private async void OnConfirmClicked(object sender, EventArgs e)
     {
-        // ValidaciÛn mÌnima de campos obligatorios.
         if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
             string.IsNullOrWhiteSpace(LastNameEntry.Text) ||
             string.IsNullOrWhiteSpace(EmailEntry.Text))
         {
-            await DisplayAlert("Error", "Por favor completa los campos obligatorios.", "OK");
+            await DisplayAlert("Campos requeridos",
+                "Por favor completa nombre, apellido y correo.",
+                "OK");
             return;
         }
 
-        // ConfirmaciÛn simbÛlica de la reserva.
-        await DisplayAlert("Reserva realizada",
-            "Tu reserva ha sido registrada. Recibir·s un correo con los detalles.",
-            "OK");
+        try
+        {
+            var reserva = new Reserva
+            {
+                RoomId = _room.Id,
+                Nombre = FirstNameEntry.Text.Trim(),
+                Apellido = LastNameEntry.Text.Trim(),
+                Correo = EmailEntry.Text.Trim(),
+                Telefono = PhoneEntry.Text?.Trim() ?? "",
+                FechaReserva = DateTime.Now
+            };
 
-        // Cierra el popup despuÈs de confirmar.
-        await Navigation.PopModalAsync();
+            await SupabaseClientService.Client
+                .From<Reserva>()
+                .Insert(reserva);
+
+            await DisplayAlert("Reserva confirmada",
+                "Tu reserva fue realizada con √©xito.",
+                "OK");
+
+            await Navigation.PopModalAsync();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error",
+                "No se pudo registrar la reserva: " + ex.Message,
+                "OK");
+        }
     }
 }
+
