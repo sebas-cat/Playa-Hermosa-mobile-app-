@@ -41,7 +41,7 @@
 
                                     <!-- Imagen -->
                                     <Image Grid.Column="0"
-                                           Source="{Binding ImageUrl}"
+                                           Source="{Binding imagen_url}"
                                            Aspect="AspectFill"
                                            HeightRequest="80"
                                            WidthRequest="100"
@@ -50,15 +50,15 @@
                                     <!-- Información -->
                                     <VerticalStackLayout Grid.Column="1"
                                                          VerticalOptions="Center">
-                                        <Label Text="{Binding Name}"
+                                        <Label Text="{Binding nombre}"
                                                FontAttributes="Bold"
                                                FontSize="16"
                                                TextColor="#333333" />
-                                        <Label Text="{Binding ShortDescription}"
+                                        <Label Text="{Binding descripcion}"
                                                FontSize="12"
                                                TextColor="#333333"
                                                LineBreakMode="TailTruncation" />
-                                        <Label Text="{Binding PricePerNight, StringFormat='$ {0:N0} por noche'}"
+                                        <Label Text="{Binding precio_noche, StringFormat='$ {0:N0} por noche'}"
                                                FontSize="12"
                                                TextColor="#735945" />
                                     </VerticalStackLayout>

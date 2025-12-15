@@ -14,10 +14,13 @@
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
 
+        <!--
+        
         <Tab Title="Perfil" Icon="perfilicono.svg">
             <ShellContent ContentTemplate="{DataTemplate local:Perfil}"/>
         </Tab>
-
+        
+        -->
         <Tab Title="Reservar" Icon="reservarimagen.svg">
             <ShellContent ContentTemplate="{DataTemplate local:Reservar}"/>
         </Tab>
