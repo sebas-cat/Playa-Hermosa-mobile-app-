@@ -1,13 +1,36 @@
-﻿namespace Infohotel.Models
+﻿using System;
+using Supabase.Postgrest.Models;
+using Supabase.Postgrest.Attributes;
+
+namespace Infohotel.Models
 {
-    public class Room
+    // Modelo para la tabla de habitaciones
+    [Table("tb_Habitacion")]
+    public class Room : BaseModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string ShortDescription { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public int MaxGuests { get; set; }
-        public decimal PricePerNight { get; set; }
+        [PrimaryKey("id_habitacion")]
+        public int id_habitacion { get; set; }
+
+        [Column("numero")]
+        public int numero { get; set; }
+
+        [Column("nombre")]
+        public string nombre { get; set; }
+
+        [Column("descripcion")]
+        public string descripcion { get; set; }
+
+        [Column("precio_noche")]
+        public decimal precio_noche { get; set; }
+
+        [Column("capacidad")]
+        public int capacidad { get; set; }
+
+        [Column("imagen_url")]
+        public string imagen_url { get; set; }
+
+        [Column("disponible")]
+        public bool disponible { get; set; }
     }
 }
+
