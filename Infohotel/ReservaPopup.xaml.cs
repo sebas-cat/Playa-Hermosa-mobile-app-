@@ -35,18 +35,18 @@ public partial class ReservaPopup : ContentPage
     // 🔸 Vista simple sin fechas (del constructor viejo)
     private void LoadRoomInfo()
     {
-        RoomNameLabel.Text = _room.Name;
-        PriceSummaryLabel.Text = $"$ {_room.PricePerNight:N0} / noche";
+        RoomNameLabel.Text = _room.nombre;
+        PriceSummaryLabel.Text = $"$ {_room.precio_noche:N0} / noche";
 
         DatesLabel.Text = $"Reserva para hoy ({DateTime.Now:dd/MM/yyyy})";
-        GuestsSummaryLabel.Text = $"Máximo {_room.MaxGuests} huéspedes";
+        GuestsSummaryLabel.Text = $"Máximo {_room.capacidad} huéspedes";
     }
 
     // 🔸 Nueva versión que muestra fechas reales y huéspedes
     private void LoadRoomInfoWithDates()
     {
-        RoomNameLabel.Text = _room.Name;
-        PriceSummaryLabel.Text = $"$ {_room.PricePerNight:N0} / noche";
+        RoomNameLabel.Text = _room.nombre;
+        PriceSummaryLabel.Text = $"$ {_room.precio_noche:N0} / noche";
 
         DatesLabel.Text =
             $"{_checkIn:dd/MM/yyyy} → {_checkOut:dd/MM/yyyy} " +
@@ -80,13 +80,17 @@ public partial class ReservaPopup : ContentPage
         {
             var reserva = new Reserva
             {
-                RoomId = _room.Id,
-                Nombre = FirstNameEntry.Text.Trim(),
-                Apellido = LastNameEntry.Text.Trim(),
-                Correo = EmailEntry.Text.Trim(),
-                Telefono = PhoneEntry.Text?.Trim() ?? "",
-                FechaReserva = DateTime.Now
+                id_Usuario = Preferences.Get("user_logeado", 0),
+                id_habitacion = _room.id_habitacion,
+                fecha_inicio = _checkIn,
+                fecha_fin = _checkOut,
+                precio_noche = _room.precio_noche,
+                noches = (_checkOut - _checkIn).Days,
+                total = _room.precio_noche * (_checkOut - _checkIn).Days,
+                estado = "Pendiente",
+                fecha_creacion = DateTime.Now
             };
+
 
             await SupabaseClientService.Client
                 .From<Reserva>()

@@ -20,15 +20,15 @@ public partial class HabitacionDetalle : ContentPage
         _room = room;
 
         // Información principal mostrada en la vista de detalle.
-        RoomNameHeader.Text = room.Name;
-        RoomImage.Source = room.ImageUrl;
-        RoomDescription.Text = room.Description;
+        RoomNameHeader.Text = room.nombre;
+        RoomImage.Source = room.imagen_url;
+        RoomDescription.Text = room.descripcion;
 
         // Se muestra el precio formateado en moneda.
-        RoomPrice.Text = $"Precio aproximado: $ {room.PricePerNight:N0} por noche";
+        RoomPrice.Text = $"Precio aproximado: $ {room.precio_noche:N0} por noche";
 
         // Indica la capacidad total permitida según el modelo.
-        RoomCapacity.Text = $"Capacidad máxima: {room.MaxGuests} personas";
+        RoomCapacity.Text = $"Capacidad máxima: {room.capacidad} personas";
 
         // Valores iniciales sugeridos.
         _checkIn = DateTime.Today.AddDays(1);
