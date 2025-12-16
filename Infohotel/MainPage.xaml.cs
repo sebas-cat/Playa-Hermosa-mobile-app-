@@ -55,6 +55,24 @@ namespace Infohotel
             }
             return 0;
         }
+
+        private async void logout(object sender, EventArgs e) {
+            try
+            {
+                if (Preferences.ContainsKey("user_logeado"))
+                    Preferences.Remove("user_logeado");
+                if (Preferences.ContainsKey("auth_token"))
+                    Preferences.Remove("auth_token");
+
+                Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new Login());
+                });
+            }
+            catch (Exception ex) {
+                await DisplayAlert("No se pudo cerrar sesion", ex.Message, "OK");
+            }
+        }
     }
 
 }
