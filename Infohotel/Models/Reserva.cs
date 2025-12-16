@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using Supabase.Postgrest.Models;
 using Supabase.Postgrest.Attributes;
 
@@ -37,6 +38,17 @@ namespace Infohotel.Models
 
         [Column("fecha_creacion")]
         public DateTime fecha_creacion { get; set; }
+
+        [Column("nombreReserva")]
+        public string nombreReserva { get; set; }
+
+        [Column("correoReserva")]
+        public string correoReserva { get; set; }
+
+        [JsonIgnore]
+        public string RoomName { get; set; }
+
+
     }
 }
 

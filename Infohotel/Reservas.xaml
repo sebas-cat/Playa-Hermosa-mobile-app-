@@ -1,77 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Infohotel.Models"
              x:Class="Infohotel.Reservas"
              Title="Mis Reservas"
-             BackgroundColor="#F3F3EE">
+             Shell.NavBarIsVisible="False">
+    
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+    <ContentPage.Content>
+        <Frame BackgroundColor="#e3d7bf"
+               CornerRadius="0"
+               HasShadow="False"
+               Padding="16"
+               Margin="0,0,10,0">
 
-            <Label Text="Mis Reservas"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="#735945"
-                   HorizontalOptions="Center"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Label Text="Mis Reservas"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#735945"
+                       Margin="0,0,0,8"/>
 
-            <Frame BackgroundColor="White"
-                   CornerRadius="12"
-                   Padding="20"
-                   HasShadow="True">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="📋 Próximamente..."
-                           FontSize="16"
-                           TextColor="#735945"
-                           HorizontalOptions="Center"/>
+                <CollectionView ItemsSource="{Binding ListaReservas}"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0,0,0,20">
+                    <CollectionView.EmptyView>
+                        <Label Text="No tienes reservas registradas."
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="#735945"
+                               FontSize="16"/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Reserva">
+                            <Frame Padding="16" Margin="10"
+       BackgroundColor="White"
+       BorderColor="#735945"
+       CornerRadius="12"
+       HasShadow="True">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label Text="{Binding RoomName, StringFormat='Habitación: {0}'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               TextColor="#333333" />
 
-                    <Label Text="Aquí podrás ver todas tus reservas realizadas"
-                           FontSize="14"
-                           TextColor="#666"
-                           HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding fecha_inicio, StringFormat='Check-in: {0:dd/MM/yyyy}'}"
+               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding fecha_fin, StringFormat='Check-out: {0:dd/MM/yyyy}'}"
+               FontSize="15" TextColor="#333333" />
 
-                    <Label Text="• Ver detalles de cada reserva"
-                           FontSize="13"
-                           TextColor="#333"/>
-                    <Label Text="• Modificar fechas"
-                           FontSize="13"
-                           TextColor="#333"/>
-                    <Label Text="• Cancelar reservas"
-                           FontSize="13"
-                           TextColor="#333"/>
-                </VerticalStackLayout>
-            </Frame>
+                                    <Label Text="{Binding noches, StringFormat='Noches: {0}'}"
+               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding precio_noche, StringFormat='Precio por noche: $ {0:N0}'}"
+               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding total, StringFormat='Total: $ {0:N0}'}"
+               FontSize="15" TextColor="#735945" />
 
-            <!-- Ejemplo de reserva (estático por ahora) -->
-            <Frame BackgroundColor="White"
-                   CornerRadius="12"
-                   Padding="15"
-                   HasShadow="True">
-                <VerticalStackLayout Spacing="8">
-                    <HorizontalStackLayout>
-                        <Label Text="🔖 RS251012456"
-                               FontAttributes="Bold"
-                               TextColor="#735945"/>
-                        <Label Text=" Confirmada"
-                               FontSize="12"
-                               TextColor="#4CAF50"
-                               HorizontalOptions="EndAndExpand"/>
-                    </HorizontalStackLayout>
+                                    <Label Text="{Binding nombreReserva, StringFormat='A nombre de: {0}'}"
+               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding correoReserva, StringFormat='Correo: {0}'}"
+               FontSize="15" TextColor="#333333" />
 
-                    <Label Text="Suite Vista al Mar"
-                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding estado, StringFormat='Estado: {0}'}"
+               FontSize="15" TextColor="#735945" />
 
-                    <Label Text="📅 25/10/2024 → 28/10/2024 (3 noches)"
-                           FontSize="12"/>
-
-                    <Label Text="👥 2 huéspedes"
-                           FontSize="12"/>
-
-                    <Label Text="💰 Total: $450"
-                           FontAttributes="Bold"
-                           TextColor="#735945"/>
-                </VerticalStackLayout>
-            </Frame>
-
-        </VerticalStackLayout>
-    </ScrollView>
+                                    <Label Text="{Binding fecha_creacion, StringFormat='Reservada el: {0:dd/MM/yyyy HH:mm}'}"
+               FontSize="13" TextColor="#999999" />
+                                    
+                                    <Button Text="Eliminar Reserva"
+        BackgroundColor="#8D6E63"
+        TextColor="White"
+        CornerRadius="8"
+        Padding="8,2"
+        FontSize="14"
+        Clicked="OnDeleteReservaClicked"
+        CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
 </ContentPage>

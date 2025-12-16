@@ -88,7 +88,9 @@ public partial class ReservaPopup : ContentPage
                 noches = (_checkOut - _checkIn).Days,
                 total = _room.precio_noche * (_checkOut - _checkIn).Days,
                 estado = "Pendiente",
-                fecha_creacion = DateTime.Now
+                fecha_creacion = DateTime.Now,
+                nombreReserva = FirstNameEntry.Text,
+                correoReserva = EmailEntry.Text
             };
 
 

@@ -1,6 +1,5 @@
 using Infohotel.Models;
 using System.Collections.ObjectModel;
-
 namespace Infohotel;
 
 public partial class Reservar : ContentPage
