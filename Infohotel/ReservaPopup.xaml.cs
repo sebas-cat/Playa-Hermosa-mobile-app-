@@ -11,7 +11,7 @@ public partial class ReservaPopup : ContentPage
     private DateTime _checkOut;
     private int _guests;
 
-    // 🔹 Constructor original (puedes dejarlo si lo necesitas)
+    // Constructor original (puedes dejarlo si lo necesitas)
     public ReservaPopup(Room room)
     {
         InitializeComponent();
@@ -19,7 +19,7 @@ public partial class ReservaPopup : ContentPage
         LoadRoomInfo();
     }
 
-    // 🔹 Constructor que SÍ COINCIDE con la llamada desde HabitacionDetalle
+    // Constructor que SÍ COINCIDE con la llamada desde HabitacionDetalle
     public ReservaPopup(Room room, DateTime checkIn, DateTime checkOut, int guests)
     {
         InitializeComponent();
@@ -32,7 +32,7 @@ public partial class ReservaPopup : ContentPage
         LoadRoomInfoWithDates();
     }
 
-    // 🔸 Vista simple sin fechas (del constructor viejo)
+    //  Vista simple sin fechas (del constructor viejo)
     private void LoadRoomInfo()
     {
         RoomNameLabel.Text = _room.nombre;
@@ -42,7 +42,7 @@ public partial class ReservaPopup : ContentPage
         GuestsSummaryLabel.Text = $"Máximo {_room.capacidad} huéspedes";
     }
 
-    // 🔸 Nueva versión que muestra fechas reales y huéspedes
+    // Nueva versión que muestra fechas reales y huéspedes
     private void LoadRoomInfoWithDates()
     {
         RoomNameLabel.Text = _room.nombre;
@@ -59,11 +59,15 @@ public partial class ReservaPopup : ContentPage
     // BOTONES
     // -----------------------------
 
+
+    // Botón Cancelar, Cierra el popup sin guardar nada
     private async void OnCancelClicked(object sender, EventArgs e)
     {
         await Navigation.PopModalAsync();
     }
 
+
+    // Botón Confirmar, Valida datos, crea la reserva y la guarda en la base de datos
     private async void OnConfirmClicked(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
@@ -78,6 +82,8 @@ public partial class ReservaPopup : ContentPage
 
         try
         {
+
+            // Se construye el objeto Reserva con todos los datos necesarios
             var reserva = new Reserva
             {
                 id_Usuario = Preferences.Get("user_logeado", 0),
@@ -93,12 +99,12 @@ public partial class ReservaPopup : ContentPage
                 correoReserva = EmailEntry.Text
             };
 
-
+            // Inserta la reserva en la base de datos usando Supabase
             await SupabaseClientService.Client
                 .From<Reserva>()
                 .Insert(reserva);
 
-            await DisplayAlert("Reserva confirmada",
+            await DisplayAlert("Reserva confirmada", // Mensaje de confirmación
                 "Tu reserva fue realizada con éxito.",
                 "OK");
 
@@ -106,7 +112,7 @@ public partial class ReservaPopup : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error",
+            await DisplayAlert("Error",  // Manejo de errores si falla el registro
                 "No se pudo registrar la reserva: " + ex.Message,
                 "OK");
         }

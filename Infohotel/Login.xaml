@@ -4,7 +4,8 @@
              x:Class="Infohotel.Login"
              Title="Login"
              NavigationPage.HasNavigationBar="False">
-             
+            
+    
     <ScrollView>
         <Grid>
             <Image Source="fondo1.png" Aspect="AspectFill" />

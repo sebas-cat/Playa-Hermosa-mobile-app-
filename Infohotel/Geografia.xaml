@@ -5,9 +5,12 @@
              x:Class="Infohotel.Geografia"
              Title="Geografia">
 
+    <!-- Control Map: muestra un mapa interactivo dentro de la app -->
     <maps:Map
         x:Name="HotelMapa"
         MapType="Street"
-        IsShowingUser="false"
+        IsShowingUser="false"               
         VerticalOptions="FillAndExpand" />
+    
+    
 </ContentPage>

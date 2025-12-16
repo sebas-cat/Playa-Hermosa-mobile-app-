@@ -9,11 +9,17 @@ namespace Infohotel
             InitializeComponent();
         }
 
+
+        // Método que se ejecuta cuando el usuario presiona el botón para ir a la imagen anterior del carrusel
         void OnPrevClicked(object sender, EventArgs e)
         {
             try
             {
-               
+
+                // Lógica de navegación hacia atrás en el carrusel:
+                // - Si no está en la primera imagen, retrocede una posición
+                // - Si ya está en la primera, vuelve a la última imagen
+
                 if (carousel.Position > 0)
                     carousel.Position--;
                 else
@@ -22,6 +28,8 @@ namespace Infohotel
             catch { }
         }
 
+
+        // Método que se ejecuta cuando el usuario presione el botón para avanzar a la siguiente imagen del carrusel
         void OnNextClicked(object sender, EventArgs e)
         {
             try
@@ -35,6 +43,7 @@ namespace Infohotel
             catch { }
         }
 
+        // Método auxiliar que calcula cuántos elementos tiene el ItemsSource del carrusel
         int GetItemsCount()
         {
   

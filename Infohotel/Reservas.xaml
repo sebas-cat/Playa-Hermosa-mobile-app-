@@ -21,9 +21,11 @@
                        TextColor="#735945"
                        Margin="0,0,0,8"/>
 
+                <!-- CollectionView que muestra la lista de reservas enlazada a ListaReservas desde el code-behind -->
                 <CollectionView ItemsSource="{Binding ListaReservas}"
                                 VerticalOptions="FillAndExpand"
                                 Margin="0,0,0,20">
+                    <!-- Vista que se muestra cuando no hay reservas -->
                     <CollectionView.EmptyView>
                         <Label Text="No tienes reservas registradas."
                                HorizontalOptions="Center"
@@ -31,50 +33,45 @@
                                TextColor="#735945"
                                FontSize="16"/>
                     </CollectionView.EmptyView>
+                    <!-- Plantilla visual para cada reserva -->
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Reserva">
+                            <!-- Frame individual para cada reserva -->
                             <Frame Padding="16" Margin="10"
-       BackgroundColor="White"
-       BorderColor="#735945"
-       CornerRadius="12"
-       HasShadow="True">
+                                    BackgroundColor="White"
+                                    BorderColor="#735945"
+                                    CornerRadius="12"
+                                    HasShadow="True">
                                 <VerticalStackLayout Spacing="8">
+                                    <!-- Información general de la habitación -->
                                     <Label Text="{Binding RoomName, StringFormat='Habitación: {0}'}"
-               FontAttributes="Bold"
-               FontSize="18"
-               TextColor="#333333" />
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="#333333" />
 
-                                    <Label Text="{Binding fecha_inicio, StringFormat='Check-in: {0:dd/MM/yyyy}'}"
-               FontSize="15" TextColor="#333333" />
-                                    <Label Text="{Binding fecha_fin, StringFormat='Check-out: {0:dd/MM/yyyy}'}"
-               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding fecha_inicio, StringFormat='Check-in: {0:dd/MM/yyyy}'}" FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding fecha_fin, StringFormat='Check-out: {0:dd/MM/yyyy}'}" FontSize="15" TextColor="#333333" />
 
-                                    <Label Text="{Binding noches, StringFormat='Noches: {0}'}"
-               FontSize="15" TextColor="#333333" />
-                                    <Label Text="{Binding precio_noche, StringFormat='Precio por noche: $ {0:N0}'}"
-               FontSize="15" TextColor="#333333" />
-                                    <Label Text="{Binding total, StringFormat='Total: $ {0:N0}'}"
-               FontSize="15" TextColor="#735945" />
+                                    <Label Text="{Binding noches, StringFormat='Noches: {0}'}" FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding precio_noche, StringFormat='Precio por noche: $ {0:N0}'}" FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding total, StringFormat='Total: $ {0:N0}'}" FontSize="15" TextColor="#735945" />
 
-                                    <Label Text="{Binding nombreReserva, StringFormat='A nombre de: {0}'}"
-               FontSize="15" TextColor="#333333" />
-                                    <Label Text="{Binding correoReserva, StringFormat='Correo: {0}'}"
-               FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding nombreReserva, StringFormat='A nombre de: {0}'}" FontSize="15" TextColor="#333333" />
+                                    <Label Text="{Binding correoReserva, StringFormat='Correo: {0}'}" FontSize="15" TextColor="#333333" />
 
-                                    <Label Text="{Binding estado, StringFormat='Estado: {0}'}"
-               FontSize="15" TextColor="#735945" />
+                                    <Label Text="{Binding estado, StringFormat='Estado: {0}'}" FontSize="15" TextColor="#735945" />
 
-                                    <Label Text="{Binding fecha_creacion, StringFormat='Reservada el: {0:dd/MM/yyyy HH:mm}'}"
-               FontSize="13" TextColor="#999999" />
-                                    
+                                    <Label Text="{Binding fecha_creacion, StringFormat='Reservada el: {0:dd/MM/yyyy HH:mm}'}" FontSize="13" TextColor="#999999" />
+
+                                    <!-- Botón para eliminar la reserva, Envía la reserva actual como parámetro -->
                                     <Button Text="Eliminar Reserva"
-        BackgroundColor="#8D6E63"
-        TextColor="White"
-        CornerRadius="8"
-        Padding="8,2"
-        FontSize="14"
-        Clicked="OnDeleteReservaClicked"
-        CommandParameter="{Binding .}" />
+                                    BackgroundColor="#8D6E63"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Padding="8,2"
+                                    FontSize="14"
+                                    Clicked="OnDeleteReservaClicked"
+                                    CommandParameter="{Binding .}" />
                                 </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>

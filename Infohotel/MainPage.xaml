@@ -8,6 +8,8 @@
     <ScrollView>
         <VerticalStackLayout Padding="10">
 
+            <!-- Imagenes y labels de pantalla principal(Imagenes y parrafos) -->
+
             <Image Source="https://content.r9cdn.net/rimg/dimg/62/80/af29351f-city-80668-168767332de.jpg"
                    WidthRequest="400"
                    HeightRequest="220"
@@ -45,16 +47,21 @@
                    FontFamily="Calisto MT"
                    LineBreakMode="WordWrap"/>
 
-          
 
+
+            <!-- Grid que contiene el carrusel de imágenes
+                 y los botones de navegación manual -->
 
 
             <Grid HeightRequest="220" Margin="0,10,0,0">
               
                 <CarouselView x:Name="carousel"
-       IndicatorView="indicator"
-       Loop="True"
-       ItemsLayout="HorizontalList">
+                                IndicatorView="indicator"
+                                Loop="True"
+                                ItemsLayout="HorizontalList">
+
+                    <!-- URLs de imágenes del destino -->
+
                     <CarouselView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>https://imgcap.capturetheatlas.com/wp-content/uploads/2024/04/Playa-Hermosa-otra-de-las-playas-mas-concurridas-de-Guanacaste-1415x540.jpg</x:String>
@@ -70,14 +77,16 @@
 
                         </x:Array>
                     </CarouselView.ItemsSource>
-                    <CarouselView.ItemTemplate>
+                    <CarouselView.ItemTemplate>   <!-- Plantilla visual para cada imagen del carrusel -->
                         <DataTemplate>
                             <Image Source="{Binding}" Aspect="AspectFill"/>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
 
-              
+
+                <!-- Botón para retroceder manualmente en el carrusel -->
+                
                 <Button Text="‹"
              Clicked="OnPrevClicked"
              BackgroundColor="#66000000"
@@ -89,6 +98,7 @@
              Margin="8"
              Padding="0"/>
 
+                <!-- Botón para avanzar manualmente en el carrusel -->
                 
                 <Button Text="›"
              Clicked="OnNextClicked"
@@ -102,6 +112,9 @@
              Padding="0"/>
             </Grid>
 
+            <!-- IndicatorView: muestra puntos que indican
+                 la posición actual dentro del carrusel -->
+            
             <IndicatorView x:Name="indicator"
                            IndicatorColor="LightGray"
                            SelectedIndicatorColor="#2E86C1"
