@@ -2,11 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Infohotel.Mas"
-             Title="Mas">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Más información">
+
+    <Grid RowDefinitions="Auto,*" Padding="10">
+
+       
+
+        <!-- Web dentro de la app -->
+        <WebView
+            x:Name="HotelWebView"
+            Grid.Row="1" />
+
+    </Grid>
 </ContentPage>
+
