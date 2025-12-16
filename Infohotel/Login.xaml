@@ -4,37 +4,69 @@
              x:Class="Infohotel.Login"
              Title="Login"
              NavigationPage.HasNavigationBar="False">
-             
+
     <ScrollView>
         <Grid>
             <Image Source="fondo1.png" Aspect="AspectFill" />
             <BoxView Color="#F3F3EE"
                      HorizontalOptions="Fill"
-                     VerticalOptions="Fill"/>
+                     VerticalOptions="Fill"
+                       InputTransparent="True"/>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="logohotel2.png" WidthRequest="200" HeightRequest="100" Margin="0,50,0,30"/>
-                <StackLayout Grid.Row="1" Padding="10,20">
-                    <Entry Placeholder="Correo electrónico" PlaceholderColor="#333333" x:Name="UsernameEntry"/>
-                    <Entry Placeholder="Contraseña" PlaceholderColor="#333333" IsPassword="True" x:Name="PasswordEntry"/>
-                    <Button Text="Iniciar Sesión" BackgroundColor="#D9C49B" TextColor="#333333" x:Name="BtnIr" Clicked="OnLoginClicked"/>
+
+                <Image Grid.Row="0"
+                       Source="logohotel2.png"
+                       WidthRequest="200"
+                       HeightRequest="100"
+                       Margin="0,50,0,30"/>
+
+                <!-- FORMULARIO -->
+                <StackLayout Grid.Row="1" Padding="10,20" Spacing="12">
+                    <Entry x:Name="UsernameEntry"
+                           Placeholder="Correo electrónico"
+                           PlaceholderColor="#333333"
+                           Keyboard="Email"/>
+
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Contraseña"
+                           PlaceholderColor="#333333"
+                           IsPassword="True"/>
+
+                    <Button Text="Iniciar Sesión"
+                            BackgroundColor="#D9C49B"
+                            TextColor="#333333"
+                            x:Name="BtnIr"
+                            Clicked="OnLoginClicked"/>
+
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Recuperar Contraseña" FontSize="Small" TextColor="#333333"/>
-                        <Label Text="Registrarse" FontSize="Small" TextColor="#333333" FontAttributes="Bold"
-       HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End">
+                        <Button Text="Recuperar Contraseña"
+        Clicked="OnCambiarPasswordClicked"
+        BackgroundColor="Transparent"
+        TextColor="#333333"
+        Padding="0"
+        FontSize="12"/>
+
+                        <Label Text="Registrarse"
+                               FontSize="Small"
+                               TextColor="#333333"
+                               FontAttributes="Bold"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="End">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                                <TapGestureRecognizer Tapped="OnRegisterTapped"/> 
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
                 </StackLayout>
+
             </Grid>
         </Grid>
-
     </ScrollView>
 
 </ContentPage>

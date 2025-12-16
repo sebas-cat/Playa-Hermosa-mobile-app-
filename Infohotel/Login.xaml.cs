@@ -5,13 +5,16 @@ namespace Infohotel;
 
 public partial class Login : ContentPage
 {
-	public Login()
-	{
-		InitializeComponent();
-	}
+    private int intentosFallidos = 0;
+
+    public Login()
+    {
+        InitializeComponent();
+    }
 
     //Metodo que juega a partir de tocar el BtnIr
-    private async void OnLoginClicked(object sender, EventArgs e) { 
+    private async void OnLoginClicked(object sender, EventArgs e)
+    {
 
         //leer los valores primero
         //sintaxis es, si entry no es nulo, que haga el trim
@@ -19,7 +22,8 @@ public partial class Login : ContentPage
         var pass = PasswordEntry.Text?.Trim();
 
         //una validacion extra que funciona como errohandler pa decirle al usuario que llene lo que falta
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass)) {
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass))
+        {
             await DisplayAlert("Error", "Debes llenar ambos campos", "OK");
             return;
         }
@@ -53,7 +57,26 @@ public partial class Login : ContentPage
             //aca va la validacion de la contrasenha
             if (user.contrasenha != pass)
             {
-                await DisplayAlert("Error", "Contraseña Incorrecta", "OK");
+                intentosFallidos++;
+
+                if (intentosFallidos >= 3)
+                {
+                    await DisplayAlert(
+                        "Acceso bloqueado",
+                        "Has ingresado la contraseña incorrecta 3 veces. La aplicación se cerrará.",
+                        "OK"
+                    );
+
+                    // Cerrar la app
+                    Application.Current.Quit();
+                    return;
+                }
+
+                await DisplayAlert(
+                    "Error",
+                    $"Contraseña incorrecta. Intento {intentosFallidos} de 3.",
+                    "OK"
+                );
                 return;
             }
 
@@ -65,7 +88,8 @@ public partial class Login : ContentPage
             //Redireccion al resto de la app
             Application.Current.MainPage = new AppShell();
         }
-        catch (Exception ex) { 
+        catch (Exception ex)
+        {
             //la parte de errores
             await DisplayAlert("Error", ex.Message, "OK");
         }
@@ -77,6 +101,10 @@ public partial class Login : ContentPage
     private async void OnRegisterTapped(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Registro());
+    }
+    private async void OnCambiarPasswordClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CambiarPassword());
     }
 
 }
