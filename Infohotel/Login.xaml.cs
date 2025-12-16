@@ -4,10 +4,14 @@ using Supabase;
 namespace Infohotel;
 
 public partial class Login : ContentPage
+
+
 {
-	public Login()
+    int contadorExplotar = 0;
+    public Login()
 	{
 		InitializeComponent();
+
 	}
 
     //Metodo que juega a partir de tocar el BtnIr
@@ -17,6 +21,8 @@ public partial class Login : ContentPage
         //sintaxis es, si entry no es nulo, que haga el trim
         var email = UsernameEntry.Text?.Trim();
         var pass = PasswordEntry.Text?.Trim();
+
+        
 
         //una validacion extra que funciona como errohandler pa decirle al usuario que llene lo que falta
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass)) {
@@ -54,6 +60,10 @@ public partial class Login : ContentPage
             if (user.contrasenha != pass)
             {
                 await DisplayAlert("Error", "Contraseña Incorrecta", "OK");
+                contadorExplotar++;
+                if (contadorExplotar == 3) { 
+                    Application.Current.Quit();
+                }
                 return;
             }
 
